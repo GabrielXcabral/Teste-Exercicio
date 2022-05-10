@@ -13,7 +13,7 @@ const preencherFormulario = (endereco) =>{
     document.getElementById('cidade').value = endereco.localidade;
 }
 
-const limparAviso (aviso) {
+const limparAviso = (aviso) =>{
     document.getElementById('cepn').style.display="none";
     document.getElementById('cepin').style.display="none";
 
