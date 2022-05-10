@@ -13,27 +13,24 @@ const preencherFormulario = (endereco) =>{
     document.getElementById('cidade').value = endereco.localidade;
 }
 
-const limparAviso = (aviso) =>{
+/*const limparAviso = (aviso) =>{
     document.getElementById('cepn').style.display="none";
     document.getElementById('cepin').style.display="none";
 
-}
+}*/
 
 const cepValido = (cep) => cep.length == 8 && /^[0-9]+$/.test(cep);
 
 
 const pesquisarCep = async() => {
-    limparAviso();
     limparFormulario();
+    //limparAviso();
 
     const cep = document.getElementById('cep').value;
     const url = `http://viacep.com.br/ws/${cep}/json/`;    
-    //Validando a informação
     if (cepValido (cep)){
         const dados = await fetch(url);
         const endereco = await dados.json();
-
-        //Tratando caso de não ter o cep digitado
         if (endereco.hasOwnProperty('erro')){
             document.getElementById('cepn').style.display="block";
         }else{
