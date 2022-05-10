@@ -1,19 +1,19 @@
-function limparFormulario (endereco) {
-    document.getElementById('rua').value = ''
-    document.getElementById('numero').value = '' 
-    document.getElementById('bairro').value = ''
-    document.getElementById('estado').value = ''
-    document.getElementById('cidade').value = ''
+const limparFormulario = (endereco) =>{
+    document.getElementById('rua').value = '';
+    document.getElementById('numero').value = ''; 
+    document.getElementById('bairro').value = '';
+    document.getElementById('estado').value = '';
+    document.getElementById('cidade').value = '';
 }
 
-function preencherFormulario (endereco) {
-    document.getElementById('rua').value = endereco.logradouro
-    document.getElementById('bairro').value = endereco.bairro
-    document.getElementById('estado').value = endereco.uf
-    document.getElementById('cidade').value = endereco.localidade
+const preencherFormulario = (endereco) =>{
+    document.getElementById('rua').value = endereco.logradouro;
+    document.getElementById('bairro').value = endereco.bairro;
+    document.getElementById('estado').value = endereco.uf;
+    document.getElementById('cidade').value = endereco.localidade;
 }
 
-function limparAviso (aviso) {
+const limparAviso (aviso) {
     document.getElementById('cepn').style.display="none";
     document.getElementById('cepin').style.display="none";
 
@@ -22,16 +22,12 @@ function limparAviso (aviso) {
 const cepValido = (cep) => cep.length == 8 && /^[0-9]+$/.test(cep);
 
 
-async function pesquisarCep () {
+const pesquisarCep = async() => {
     limparAviso();
     limparFormulario();
 
     const cep = document.getElementById('cep').value;
-    const url = `http://viacep.com.br/ws/${cep}/json/`;
-    //fetch(url).then(responde => responde.json()).then(console.log);
-    //const dados = await fetch(url);
-    //const endereco = await dados.json();
-    
+    const url = `http://viacep.com.br/ws/${cep}/json/`;    
     //Validando a informação
     if (cepValido (cep)){
         const dados = await fetch(url);
