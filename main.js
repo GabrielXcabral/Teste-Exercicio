@@ -34,14 +34,14 @@ const pesquisarCep = async() => {
         const dados = await fetch(url);
         const endereco = await dados.json();
         if (endereco.hasOwnProperty('erro')){
-            document.getElementById('endereco').value = 'CEP não encontrado!';
             document.getElementById('cepn').style.display="block";
+            document.getElementById('endereco').value = 'CEP não encontrado!';
         }else {
             preencherFormulario(endereco);
         }
     }else{
-        document.getElementById('endereco').value = 'CEP incorreto!';
         document.getElementById('cepin').style.display="block";
+        document.getElementById('endereco').value = 'CEP incorreto!';
     }
      
 }
